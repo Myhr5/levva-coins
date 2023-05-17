@@ -1,3 +1,10 @@
+import { Header } from "../../components/Header";
+import { HomeWrapper } from "./styles";
+
 export function Home() {
-  return <p>Home</p>;
+  return (
+    <HomeWrapper>
+      <Header />
+    </HomeWrapper>
+  );
 }
