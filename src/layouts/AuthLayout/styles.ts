@@ -9,3 +9,30 @@ export const AuthBackground = styled.div`
 
   height: 100vh;
 `;
+
+export const AuthWrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; //adição a posteriori para correção
+
+  max-width: 30rem;
+  height: 100vh;
+
+  padding: 0 1rem;
+  margin: 0 auto;
+`;
+
+export const AuthContent = styled.div`
+  div {
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      min-width: 360px;
+    }
+  }
+`;
