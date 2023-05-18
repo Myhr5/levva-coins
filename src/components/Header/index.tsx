@@ -6,6 +6,8 @@ import {
   UserAvatar,
 } from "./styles";
 
+import * as Dialog from "@radix-ui/react-dialog";
+
 import levvaCoinsLogo from "../../assets/logo.svg";
 import perfilIcon from "../../assets/icon.jpg";
 
@@ -17,7 +19,24 @@ export function Header() {
 
         <div>
           <NewCategoryButton>Nova Categoria</NewCategoryButton>
-          <NewTransactionButton>Nova Transação</NewTransactionButton>
+
+          <Dialog.Root>
+            <Dialog.Trigger>
+              <NewTransactionButton>Nova Transação</NewTransactionButton>
+            </Dialog.Trigger>
+
+            <Dialog.Portal>
+              <Dialog.Overlay />
+
+              <Dialog.Content>
+                <Dialog.Title>Nova transação</Dialog.Title>
+
+                {/* <Dialog.Description /> */}
+
+                <Dialog.Close />
+              </Dialog.Content>
+            </Dialog.Portal>
+          </Dialog.Root>
         </div>
       </HeaderContent>
 
