@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 import {
   HeaderContainer,
   HeaderContent,
@@ -6,41 +8,66 @@ import {
   UserAvatar,
 } from "./styles";
 
-import * as Dialog from "@radix-ui/react-dialog";
-
 import levvaCoinsLogo from "../../assets/logo.svg";
-import perfilIcon from "../../assets/icon.jpg";
+import icon from "../../assets/icon.jpg";
+import { Modal } from "../Modal";
+import {
+  Form,
+  FormButton,
+  FormInput,
+  TransactionTypeButton,
+  TransactionTypeContainer,
+} from "../../styles/global";
+import { ArrowCircleDown, ArrowCircleUp } from "phosphor-react";
 
 export function Header() {
+  const newCategoryButton: ReactNode = <NewCategoryButton>Nova Categoria</NewCategoryButton>;
+  const newTransactionButton: ReactNode = (
+    <NewTransactionButton>Nova Transação</NewTransactionButton>
+  );
+  const userAvatar: ReactNode = <UserAvatar src={icon} alt="Ícone" />;
+
   return (
     <HeaderContainer>
       <HeaderContent>
         <img src={levvaCoinsLogo} alt="levva Coins" />
 
         <div>
-          <NewCategoryButton>Nova Categoria</NewCategoryButton>
+          <Modal title="Nova categoria" trigger={newCategoryButton}>
+            <Form>
+              <FormInput type="name" value="Descrição" />
+              <FormButton type="submit">Cadastrar</FormButton>
+            </Form>
+          </Modal>
+          <Modal title="Nova transação" trigger={newTransactionButton}>
+            <Form>
+              <FormInput type="text" placeholder="Descrição" required />
+              <FormInput type="number" placeholder="Preço" required />
+              <FormInput type="text" placeholder="Categoria" required />
 
-          <Dialog.Root>
-            <Dialog.Trigger>
-              <NewTransactionButton>Nova Transação</NewTransactionButton>
-            </Dialog.Trigger>
+              <TransactionTypeContainer>
+                <TransactionTypeButton variant="income" value="income">
+                  <ArrowCircleUp size={24} />
+                  Entrada
+                </TransactionTypeButton>
+                <TransactionTypeButton variant="outcome" value="outcome">
+                  <ArrowCircleDown size={24} />
+                  Saída
+                </TransactionTypeButton>
+              </TransactionTypeContainer>
 
-            <Dialog.Portal>
-              <Dialog.Overlay />
-
-              <Dialog.Content>
-                <Dialog.Title>Nova transação</Dialog.Title>
-
-                {/* <Dialog.Description /> */}
-
-                <Dialog.Close />
-              </Dialog.Content>
-            </Dialog.Portal>
-          </Dialog.Root>
+              <FormButton type="submit">Cadastrar</FormButton>
+            </Form>
+          </Modal>
         </div>
-      </HeaderContent>
 
-      <UserAvatar src={perfilIcon} alt="Jemima Luz" />
+        <Modal title="Meu perfil" trigger={userAvatar}>
+          <UserAvatar src={icon} alt="User Icon" variant="large" />
+          <FormInput type="name" value="User Name" />
+          <FormInput type="email" placeholder="user.email@levva.io" disabled />
+          <FormButton type="submit">Atualizar</FormButton>
+        </Modal>
+      </HeaderContent>
     </HeaderContainer>
   );
 }
