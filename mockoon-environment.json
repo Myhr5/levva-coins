@@ -1,0 +1,90 @@
+{
+  "uuid": "be1c634d-1377-4457-8cf7-841b85ef7e8c",
+  "lastMigration": 27,
+  "name": "Mockoon environment",
+  "endpointPrefix": "api",
+  "latency": 750,
+  "port": 3333,
+  "hostname": "",
+  "folders": [
+    {
+      "uuid": "f845bd12-0058-46b5-acd4-19045c756dd0",
+      "name": "Users",
+      "collapsed": false,
+      "children": [
+        {
+          "type": "route",
+          "uuid": "7ec79d9e-3b76-41db-b46a-4bfd8187ac27"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "uuid": "7ec79d9e-3b76-41db-b46a-4bfd8187ac27",
+      "type": "http",
+      "documentation": "Create one user",
+      "method": "post",
+      "endpoint": "user",
+      "responses": [
+        {
+          "uuid": "f5d20307-2122-458b-9dc5-b4d230bb7ab3",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "User created",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "folder",
+      "uuid": "f845bd12-0058-46b5-acd4-19045c756dd0"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}

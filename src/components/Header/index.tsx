@@ -62,7 +62,10 @@ export function Header() {
         </div>
 
         <Modal title="Meu perfil" trigger={userAvatar}>
-          <UserAvatar src={icon} alt="User Icon" variant="large" />
+          <Form>
+            <UserAvatar src={icon} alt="User Icon" variant="large" />
+          </Form>
+
           <FormInput type="name" value="User Name" />
           <FormInput type="email" placeholder="user.email@levva.io" disabled />
           <FormButton type="submit">Atualizar</FormButton>

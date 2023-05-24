@@ -14,13 +14,19 @@ export const AuthWrapper = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; //adição a posteriori para correção
+  /* align-items: center; //adição a posteriori para correção */
 
   max-width: 30rem;
   height: 100vh;
 
   padding: 0 1rem;
   margin: 0 auto;
+
+  header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
 `;
 
 export const AuthContent = styled.div`
