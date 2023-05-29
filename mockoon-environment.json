@@ -120,7 +120,7 @@
       "responses": [
         {
           "uuid": "ed09fadd-423c-4013-8a4c-0f4b30355ddb",
-          "body": "{\n  \"id\": \"{{guid}}\",\n  \"email\": \"jhon.doe@levva.io\",\n  \"token\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Impob24uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.EZof9bZnNwTyEvrzWap7giI2ucxlZ9L3gqQB8aF19Fs\"\n}",
+          "body": "{\n  \"id\": \"5fcf703c-43a1-4dfe-997f-dc14d32a69f8\",\n  \"name\": \"Mirele Fernandes\",\n  \"email\": \"jhon.doe@levva.io\",\n  \"token\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Impob24uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.EZof9bZnNwTyEvrzWap7giI2ucxlZ9L3gqQB8aF19Fs\"\n}",
           "latency": 0,
           "statusCode": 200,
           "label": "User authenticated",
@@ -225,6 +225,38 @@
               "target": "params",
               "modifier": "userId",
               "value": "5fcf703c-43a1-4dfe-997f-dc14d32a69f8",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        },
+        {
+          "uuid": "2b598e5b-0a78-44c4-a749-994eb8cae706",
+          "body": "",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "User unauthorized",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "authorization",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "header",
+              "modifier": "authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Impob24uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.EZof9bZnNwTyEvrzWap7giI2ucxlZ9L3gqQB8aF19Fs",
               "invert": true,
               "operator": "equals"
             }
@@ -422,14 +454,14 @@
             {
               "target": "body",
               "modifier": "type",
-              "value": "deposit",
+              "value": "0",
               "invert": true,
               "operator": "equals"
             },
             {
               "target": "body",
               "modifier": "type",
-              "value": "credit",
+              "value": "1",
               "invert": true,
               "operator": "equals"
             }
@@ -484,7 +516,7 @@
       "responses": [
         {
           "uuid": "33d6be77-ab5d-47e6-9753-886e449254ba",
-          "body": "[\n  {{#repeat 5 10}}\n  {\n    \"description\": \"{{faker 'commerce.productName'}}\",\n    \"amount\": \"{{toFixed (float 10 100) 2}}\",\n    \"type\": \"{{oneOf (array 'deposit' 'credit')}}\",\n    \"id\": \"{{guid}}\"\n  }\n  {{/repeat}}\n]",
+          "body": "[\n  {{#repeat 5 10}}\n  {\n    \"description\": \"{{faker 'commerce.productName'}}\",\n    \"amount\": \"{{toFixed (float 10 100) 2}}\",\n    \"type\": \"{{oneOf (array 'deposit' 'credit')}}\",\n    \"category\": {\n      \"id\": \"{{guid}}\",\n      \"description\": \"{{faker 'commerce.department'}}\"\n    }  \n  }\n  {{/repeat}}\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "List all categories",
