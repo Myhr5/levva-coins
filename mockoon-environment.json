@@ -139,7 +139,7 @@
           "uuid": "870bd51a-a092-4b99-a590-8d0f03d99d75",
           "body": "{\n  \"hasError\": true,\n  \"message\": \"Usuário ou senha inválidos\"\n}",
           "latency": 0,
-          "statusCode": 400,
+          "statusCode": 401,
           "label": "Invalid user",
           "headers": [],
           "bodyType": "INLINE",
@@ -599,6 +599,18 @@
     {
       "key": "Content-Type",
       "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
     }
   ],
   "proxyReqHeaders": [

@@ -40,7 +40,7 @@ export function Login() {
         <FormInput {...register("email")} placeholder="E-mail" />
         {errors.email && <FormError>{errors.email.message}</FormError>}
 
-        <FormInput {...register("password")} placeholder="Senha" />
+        <FormInput {...register("password")} type="password" placeholder="Senha" />
         {errors.password && <FormError>{errors.password.message}</FormError>}
 
         {hasError && <FormError>{errorMessage}</FormError>}
