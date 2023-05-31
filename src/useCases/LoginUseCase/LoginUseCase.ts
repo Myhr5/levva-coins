@@ -7,10 +7,6 @@ import { loadLogin, loadLoginDone, loadLoginFail } from "../../stores/LoginStore
 const execute = async ({ email, password }: LoginParams): Promise<void> => {
   loadLogin();
 
-  const errorCallback = ({ hasError, message }: RequestError) => {
-    loadLoginFail({ hasError, message });
-  };
-
   return LoginService.authenticateUser({ email, password })
     .then((user: LoginValues) => {
       window.localStorage.setItem("user", JSON.stringify(user));
@@ -20,7 +16,9 @@ const execute = async ({ email, password }: LoginParams): Promise<void> => {
       //navegar o usuario logado para a home
       router.navigate("/home");
     })
-    .catch(errorCallback);
+    .catch(({ hasError, message }: RequestError) => {
+      loadLoginFail({ hasError, message });
+    });
 };
 
 const LoginUseCase = {

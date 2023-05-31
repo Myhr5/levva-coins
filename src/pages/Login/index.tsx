@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { AuthLayout } from "../../layouts/AuthLayout";
-import { Form, FormButton, FormError, FormInput } from "../../styles/global";
+import { Form, FormButton, FormError, FormInput, FormLink } from "../../styles/global";
 
 import LoginUseCase from "../../useCases/LoginUseCase/LoginUseCase";
 import { useStore } from "effector-react";
@@ -44,6 +44,8 @@ export function Login() {
         {errors.password && <FormError>{errors.password.message}</FormError>}
 
         {hasError && <FormError>{errorMessage}</FormError>}
+
+        <FormLink to="/new-account">Não tem conta? Crie agora</FormLink>
 
         <FormButton type="submit">{isLoading ? "Carregando..." : "Entrar"}</FormButton>
       </Form>
