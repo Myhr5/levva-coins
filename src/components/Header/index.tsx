@@ -5,6 +5,7 @@ import {
   HeaderContent,
   NewCategoryButton,
   NewTransactionButton,
+  SignOutButton,
   UserAvatar,
 } from "./styles";
 
@@ -20,12 +21,19 @@ import {
 } from "../../styles/global";
 import { ArrowCircleDown, ArrowCircleUp } from "phosphor-react";
 
+import { router } from "../../Router";
+
 export function Header() {
   const newCategoryButton: ReactNode = <NewCategoryButton>Nova Categoria</NewCategoryButton>;
   const newTransactionButton: ReactNode = (
     <NewTransactionButton>Nova Transação</NewTransactionButton>
   );
   const userAvatar: ReactNode = <UserAvatar src={icon} alt="Ícone" />;
+
+  function handleSignOut() {
+    window.localStorage.removeItem("user");
+    router.navigate("/login");
+  }
 
   return (
     <HeaderContainer>
@@ -69,6 +77,9 @@ export function Header() {
           <FormInput type="name" value="User Name" />
           <FormInput type="email" placeholder="user.email@levva.io" disabled />
           <FormButton type="submit">Atualizar</FormButton>
+          <SignOutButton type="button" onClick={handleSignOut}>
+            Sair
+          </SignOutButton>
         </Modal>
       </HeaderContent>
     </HeaderContainer>

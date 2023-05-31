@@ -516,7 +516,7 @@
       "responses": [
         {
           "uuid": "33d6be77-ab5d-47e6-9753-886e449254ba",
-          "body": "[\n  {{#repeat 5 10}}\n  {\n    \"description\": \"{{faker 'commerce.productName'}}\",\n    \"amount\": \"{{toFixed (float 10 100) 2}}\",\n    \"type\": \"{{oneOf (array 'deposit' 'credit')}}\",\n    \"category\": {\n      \"id\": \"{{guid}}\",\n      \"description\": \"{{faker 'commerce.department'}}\"\n    }  \n  }\n  {{/repeat}}\n]",
+          "body": "[\n  {{#repeat 5 10}}\n  {\n    \"description\": \"{{faker 'commerce.productName'}}\",\n    \"amount\": \"{{toFixed (float 10 100) 2}}\",\n    \"type\": \"{{oneOf (array 0 1)}}\",\n    \"category\": {\n      \"id\": \"{{guid}}\",\n      \"description\": \"{{faker 'commerce.department'}}\"\n    }  \n  }\n  {{/repeat}}\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "List all categories",
