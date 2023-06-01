@@ -8,8 +8,8 @@ import {
 
 import { router } from "../../Router";
 
-import { NewAccountParams } from "../../domain/newAccount";
-import { RequestError } from "../../domain/request";
+import { NewAccountParams } from "../../domains/newAccount";
+import { RequestError } from "../../domains/request";
 
 const execute = async ({
   name,

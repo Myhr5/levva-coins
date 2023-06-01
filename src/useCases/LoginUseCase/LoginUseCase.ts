@@ -1,6 +1,6 @@
 import { router } from "../../Router";
-import { LoginParams, LoginValues } from "../../domain/login";
-import { RequestError } from "../../domain/request";
+import { LoginParams, LoginValues } from "../../domains/login";
+import { RequestError } from "../../domains/request";
 import { LoginService } from "../../services/LoginService/LoginService";
 import { loadLogin, loadLoginDone, loadLoginFail } from "../../stores/LoginStore/LoginEvents";
 

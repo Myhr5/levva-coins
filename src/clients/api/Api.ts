@@ -1,6 +1,7 @@
 import Axios, { AxiosRequestConfig } from "axios";
 
 import { getApiHost } from "../../services/HostService/HostService";
+import { LoginValues } from "../../domains/login";
 
 export interface IRequest {
   url: string;
@@ -8,7 +9,13 @@ export interface IRequest {
   config?: AxiosRequestConfig;
 }
 
-Axios.interceptors.request.use(config => config);
+Axios.interceptors.request.use(config => {
+  const user = JSON.parse(window.localStorage.getItem("user") ?? "{}") as LoginValues;
+
+  if (user.token) config.headers.Authorization = user.token;
+
+  return config;
+});
 
 const Api = {
   get: ({ url }: IRequest): Promise<any> => Axios.get(`${getApiHost()}${url}`),

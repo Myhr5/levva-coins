@@ -2,8 +2,8 @@ import { AxiosError } from "axios";
 
 import Api from "../../clients/api/Api";
 
-import { LoginParams, LoginValues } from "../../domain/login";
-import { RequestError } from "../../domain/request";
+import { LoginParams, LoginValues } from "../../domains/login";
+import { RequestError } from "../../domains/request";
 
 const authenticateUser = async ({ email, password }: LoginParams): Promise<LoginValues> => {
   return Api.post({

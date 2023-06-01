@@ -2,22 +2,14 @@ import { AxiosError } from "axios";
 
 import Api from "../../clients/api/Api";
 
-import { NewAccountParams } from "../../domains/newAccount";
 import { RequestError } from "../../domains/request";
+import { NewCategoryParams } from "../../domains/category";
 
-const createUser = async ({
-  name,
-  email,
-  password,
-  confirmPassword,
-}: NewAccountParams): Promise<void> => {
+const createCategory = async ({ description }: NewCategoryParams): Promise<void> => {
   return Api.post({
-    url: "/user",
+    url: "/category",
     body: {
-      name,
-      email,
-      password,
-      confirmPassword,
+      description,
     },
   })
     .then(response => {
@@ -28,6 +20,6 @@ const createUser = async ({
     });
 };
 
-export const NewAccountService = {
-  createUser,
+export const CategoryService = {
+  createCategory,
 };

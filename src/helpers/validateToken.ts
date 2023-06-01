@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { LoginValues } from "../domain/login";
+import { LoginValues } from "../domains/login";
 
 export function validateToken() {
   const user = JSON.parse(window.localStorage.getItem("user") ?? "{}") as LoginValues;
