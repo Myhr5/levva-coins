@@ -3,13 +3,21 @@ import { AxiosError } from "axios";
 import Api from "../../clients/api/Api";
 
 import { RequestError } from "../../domains/request";
-import { CategoryValues, NewCategoryParams } from "../../domains/category";
+import { NewTransactionParams, TransactionValues } from "../../domains/transaction";
 
-const createCategory = async ({ description }: NewCategoryParams): Promise<void> => {
+const createTransaction = async ({
+  description,
+  amount,
+  type,
+  categoryId,
+}: NewTransactionParams): Promise<void> => {
   return Api.post({
-    url: "/category",
+    url: "/transaction",
     body: {
       description,
+      amount,
+      type,
+      categoryId,
     },
   })
     .then(response => {
@@ -20,9 +28,9 @@ const createCategory = async ({ description }: NewCategoryParams): Promise<void>
     });
 };
 
-const getCategories = async (): Promise<CategoryValues[]> => {
+const getTransactions = async (): Promise<TransactionValues[]> => {
   return Api.get({
-    url: "/category",
+    url: "/transaction",
   })
     .then(response => {
       return response.data;
@@ -32,7 +40,7 @@ const getCategories = async (): Promise<CategoryValues[]> => {
     });
 };
 
-export const CategoryService = {
-  createCategory,
-  getCategories,
+export const TransactionService = {
+  createTransaction,
+  getTransactions,
 };
