@@ -36,9 +36,9 @@ const TransactionStore = createStore<TransactionState>(initialState)
   }))
   .on(loadTransactionFail, (state, data) => ({
     ...state,
-    isLoading: false,
-    hasError: data.hasError,
+    hasError: true,
     errorMessage: data.message,
+    isLoading: false,
   }));
 
 export default TransactionStore;

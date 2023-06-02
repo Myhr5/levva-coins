@@ -1,11 +1,16 @@
+import { useEffect, useRef } from "react";
+
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 import { useStore } from "effector-react";
 
-import newTransactionUseCase from "../../useCases/NewTransactionUseCase/NewTransactionUseCase";
+import { ArrowCircleDown, ArrowCircleUp } from "phosphor-react";
 
+import GetCategoriesUseCase from "../../useCases/GetCategoriesUseCase/GetCategoriesUseCase";
+
+import CategoryStore from "../../stores/CategoryStore/CategoryStore";
 import TransactionStore from "../../stores/TransactionStore/TransactionStore";
 
 import { NewTransactionButton } from "./styles";
@@ -20,10 +25,7 @@ import {
   TransactionTypeButton,
   TransactionTypeContainer,
 } from "../../styles/global";
-import { useEffect, useRef } from "react";
-import CategoryStore from "../../stores/CategoryStore/CategoryStore";
-import GetCategoriesUseCase from "../../useCases/GetCategoriesUseCase/GetCategoriesUseCase";
-import { ArrowCircleDown, ArrowCircleUp } from "phosphor-react";
+import NewTransactionUseCase from "../../useCases/NewTransactionUseCase/NewTransactionUseCase";
 
 interface FormProps {
   description: string;
@@ -36,10 +38,7 @@ const formSchema = yup
   .object({
     description: yup.string().required("O nome da transação é obrigatório."),
     amount: yup.number().required("O valor da transação é obrigatório."),
-    type: yup
-      .string()
-      .oneOf(["income", "outocome"])
-      .required("O valor da transação é obrigatório."),
+    type: yup.string().oneOf(["income", "outcome"]).required("O valor da transação é obrigatório."),
     categoryId: yup.string().required("O nome da categoria é obrigatório."),
   })
   .required();
@@ -63,35 +62,26 @@ export function TransactionModal() {
   }, []);
 
   async function handleCreateTransaction({ description, amount, type, categoryId }: FormProps) {
-    newTransactionUseCase
-      .execute({ description, amount, type: type === "income" ? 0 : 1, categoryId })
+    console.log(type);
+
+    NewTransactionUseCase.execute({
+      description,
+      amount,
+      type: type === "income" ? 0 : 1,
+      categoryId,
+    })
       .then(() => closeModalRef.current?.click())
       .finally(() => reset());
   }
 
   return (
-    // <Modal
-    //   title="Nova categoria"
-    //   closeModalRef={closeModalRef}
-    //   trigger={<NewCategoryButton>Nova Categoria</NewCategoryButton>}
-    // >
-    //   <Form onSubmit={handleSubmit(handleCreateCategory)}>
-    //     <FormInput {...register("description")} placeholder="Descrição" />
-    //     {errors.description && <FormError>{errors.description.message}</FormError>}
-
-    //     {hasError && <FormError>{errorMessage}</FormError>}
-
-    //     <FormButton type="submit">{isLoading ? "Carregando..." : "Cadastrar"}</FormButton>
-    //   </Form>
-    // </Modal>
-
     <Modal
       title="Nova transação"
       closeModalRef={closeModalRef}
       trigger={<NewTransactionButton>Nova Transação</NewTransactionButton>}
     >
       <Form onSubmit={handleSubmit(handleCreateTransaction)}>
-        <FormInput {...register("description")} placeholder="Descrição" required />
+        <FormInput {...register("description")} placeholder="Descrição" />
         {errors.description && <FormError>{errors.description.message}</FormError>}
 
         <FormInput
@@ -101,7 +91,6 @@ export function TransactionModal() {
           step="0.1"
           min="0"
           max="999999"
-          required
         />
         {errors.amount && <FormError>{errors.amount.message}</FormError>}
 
@@ -110,16 +99,18 @@ export function TransactionModal() {
             Categoria
           </option>
           {categories.map(category => (
-            <option value={category.id}>{category.description}</option>
+            <option key={category.id} value={category.id}>
+              {category.description}
+            </option>
           ))}
         </FormSelect>
         {errors.categoryId && <FormError>{errors.categoryId.message}</FormError>}
 
         <TransactionTypeContainer
           {...register("type")}
-          onChange={event => setValue("type", event.target.value)}
+          onValueChange={value => setValue("type", value)}
         >
-          <TransactionTypeButton variant="income" value="income">
+          <TransactionTypeButton variant="income" value="income" id="Entrada">
             <ArrowCircleUp size={24} />
             Entrada
           </TransactionTypeButton>
