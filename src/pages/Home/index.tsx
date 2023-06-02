@@ -28,7 +28,7 @@ export function Home() {
   useEffect(() => {
     GetTransactiosnUseCase.execute();
   }, []);
-
+  console.log(transactions.map(transaction => transaction));
   return (
     <HomeWrapper>
       <Header />
@@ -46,7 +46,7 @@ export function Home() {
           </thead>
           <tbody>
             {transactions.length > 0 &&
-              transactions.map(transaction => (
+              Array.from(transactions).map(transaction => (
                 <tr>
                   <td width="50%">{transaction.description}</td>
                   <td>
