@@ -28,7 +28,7 @@ export function Home() {
   useEffect(() => {
     GetTransactiosnUseCase.execute();
   }, []);
-  console.log(transactions.map(transaction => transaction));
+
   return (
     <HomeWrapper>
       <Header />
