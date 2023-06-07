@@ -39,10 +39,12 @@ export function Home() {
       <TransactionsContainer>
         <TransactionsTable>
           <thead>
-            <td>Descrição</td>
-            <td>Preço</td>
-            <td>Categoria</td>
-            <td>Data</td>
+            <tr>
+              <td>Descrição</td>
+              <td>Preço</td>
+              <td>Categoria</td>
+              <td>Data</td>
+            </tr>
           </thead>
           <tbody>
             {transactions.length > 0 &&
