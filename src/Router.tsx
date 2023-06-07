@@ -17,7 +17,7 @@ const isAuthenticated = validateToken();
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route path="/" element={<Navigate to="/login" />} />
+      <Route path="*" element={<Navigate to="/login" replace />} />
 
       <Route element={isAuthenticated ? <Navigate to="/home" /> : <Outlet />}>
         <Route index path="/login" element={<Login />} />
