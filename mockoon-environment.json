@@ -1,5 +1,5 @@
 {
-  "uuid": "be1c634d-1377-4457-8cf7-841b85ef7e8c",
+  "uuid": "c7dfc42b-561c-47a1-ae62-463f2fd4e134",
   "lastMigration": 27,
   "name": "Mockoon environment",
   "endpointPrefix": "api",
@@ -8,65 +8,65 @@
   "hostname": "",
   "folders": [
     {
-      "uuid": "f845bd12-0058-46b5-acd4-19045c756dd0",
+      "uuid": "ef94097e-7b01-44a6-8514-e601516ed308",
       "name": "Users",
       "collapsed": false,
       "children": [
         {
           "type": "route",
-          "uuid": "7ec79d9e-3b76-41db-b46a-4bfd8187ac27"
+          "uuid": "ee1ac7e0-8625-40a1-a9c0-5d787bd0a15f"
         },
         {
           "type": "route",
-          "uuid": "888f5fef-3cfc-422a-b098-5c896461dfb8"
+          "uuid": "0cd540e1-e20c-479a-95fd-e62a181428b0"
         },
         {
           "type": "route",
-          "uuid": "2d15e885-a735-4bb7-9fb5-246855daee3f"
+          "uuid": "0987314f-5065-4d04-a9a4-d5e9d70756a6"
         }
       ]
     },
     {
-      "uuid": "3e8adeae-0051-48e1-bd4e-62c501e3086a",
+      "uuid": "623d8c34-36c0-4f39-8e2f-4f765190590d",
       "name": "Categories",
       "collapsed": false,
       "children": [
         {
           "type": "route",
-          "uuid": "18efc195-41f6-4670-a07b-8bbb28a6cfea"
+          "uuid": "fa3ad335-2388-44d5-8859-def0c3b17766"
         },
         {
           "type": "route",
-          "uuid": "d18e686d-b8ba-45b2-8e97-05073c397fc0"
+          "uuid": "998e16ec-b671-4851-9550-18dc080e903e"
         }
       ]
     },
     {
-      "uuid": "12a1a0c8-6d29-4c80-98ea-2725d9cd61a2",
+      "uuid": "a6d7a334-b33a-4b86-9b4d-5c0b2942ed9b",
       "name": "Transactions",
       "collapsed": false,
       "children": [
         {
           "type": "route",
-          "uuid": "543586ac-1b2f-4c2d-a492-b50676a0f1c7"
+          "uuid": "6b83ddd5-750d-429a-b28a-399961a4d110"
         },
         {
           "type": "route",
-          "uuid": "5b5c5a0f-8da7-40c8-8400-cdec83afe7ad"
+          "uuid": "50440484-3859-4d44-9ae5-d074c5035ff2"
         }
       ]
     }
   ],
   "routes": [
     {
-      "uuid": "7ec79d9e-3b76-41db-b46a-4bfd8187ac27",
+      "uuid": "ee1ac7e0-8625-40a1-a9c0-5d787bd0a15f",
       "type": "http",
       "documentation": "Create one user",
       "method": "post",
       "endpoint": "user",
       "responses": [
         {
-          "uuid": "f5d20307-2122-458b-9dc5-b4d230bb7ab3",
+          "uuid": "074ceb0e-6356-4dfe-8f77-42f1cab06a30",
           "body": "",
           "latency": 0,
           "statusCode": 201,
@@ -83,7 +83,7 @@
           "default": true
         },
         {
-          "uuid": "0752ccdd-372b-4dfe-ac71-f4b016e97597",
+          "uuid": "5ec5da1a-2bda-47c1-b23a-6359cb7322fc",
           "body": "{\n  \"hasError\": true,\n  \"message\": \"Esse e-mail já existe.\"\n}",
           "latency": 0,
           "statusCode": 400,
@@ -112,14 +112,14 @@
       "responseMode": null
     },
     {
-      "uuid": "888f5fef-3cfc-422a-b098-5c896461dfb8",
+      "uuid": "0cd540e1-e20c-479a-95fd-e62a181428b0",
       "type": "http",
       "documentation": "Authenticate one user",
       "method": "post",
       "endpoint": "auth",
       "responses": [
         {
-          "uuid": "ed09fadd-423c-4013-8a4c-0f4b30355ddb",
+          "uuid": "9ac2c2ac-b34b-41d4-b3bd-b05cfec779fc",
           "body": "{\n  \"id\": \"a0d15078-57c9-498e-83b7-d9b0f0ca6a92\",\n  \"name\": \"Jhon Doe\",\n  \"email\": \"jhon.doe@levva.io\",\n  \"token\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWQiOiJhMGQxNTA3OC01N2M5LTQ5OGUtODNiNy1kOWIwZjBjYTZhOTIiLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6Impob24uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.8VQJd-Q6B2eMUCxiVIwLHDeyD_8ymWqIesLje0_e1FM\"\n}",
           "latency": 0,
           "statusCode": 200,
@@ -130,14 +130,14 @@
           "databucketID": "",
           "sendFileAsBody": false,
           "rules": [],
-          "rulesOperator": "OR",
+          "rulesOperator": "AND",
           "disableTemplating": false,
           "fallbackTo404": false,
           "default": true
         },
         {
-          "uuid": "870bd51a-a092-4b99-a590-8d0f03d99d75",
-          "body": "{\n  \"hasError\": true,\n  \"message\": \"Usuário ou senha inválidos\"\n}",
+          "uuid": "23915810-0d0c-4793-8301-e2fc0ecf71c0",
+          "body": "{\n  \"hasError\": true,\n  \"message\": \"Usuário ou senha inválidos.\"\n}",
           "latency": 0,
           "statusCode": 401,
           "label": "Invalid user",
@@ -179,18 +179,18 @@
       "responseMode": null
     },
     {
-      "uuid": "2d15e885-a735-4bb7-9fb5-246855daee3f",
+      "uuid": "0987314f-5065-4d04-a9a4-d5e9d70756a6",
       "type": "http",
       "documentation": "Update one user",
       "method": "put",
       "endpoint": "user/:userId",
       "responses": [
         {
-          "uuid": "7eac2679-3579-4dd5-808c-f306d6b03268",
+          "uuid": "62af3f49-937e-4415-a6a1-e162267f2baa",
           "body": "",
           "latency": 0,
           "statusCode": 204,
-          "label": "User update",
+          "label": "User updated",
           "headers": [],
           "bodyType": "INLINE",
           "filePath": "",
@@ -203,7 +203,7 @@
           "default": true
         },
         {
-          "uuid": "04ae40af-7139-423c-a77d-04ecbf7c7b5f",
+          "uuid": "2e43c430-4349-4fcf-be50-dac7d6993c7e",
           "body": "{\n  \"hasError\": true,\n  \"message\": \"Esse usuário não existe.\"\n}",
           "latency": 0,
           "statusCode": 400,
@@ -214,13 +214,6 @@
           "databucketID": "",
           "sendFileAsBody": false,
           "rules": [
-            {
-              "target": "params",
-              "modifier": "userId",
-              "value": "",
-              "invert": false,
-              "operator": "null"
-            },
             {
               "target": "params",
               "modifier": "userId",
@@ -235,8 +228,8 @@
           "default": false
         },
         {
-          "uuid": "2b598e5b-0a78-44c4-a749-994eb8cae706",
-          "body": "",
+          "uuid": "f19ea3ca-181e-4dff-a5ec-4a71cbd58061",
+          "body": "{}",
           "latency": 0,
           "statusCode": 401,
           "label": "User unauthorized",
@@ -271,14 +264,14 @@
       "responseMode": null
     },
     {
-      "uuid": "18efc195-41f6-4670-a07b-8bbb28a6cfea",
+      "uuid": "fa3ad335-2388-44d5-8859-def0c3b17766",
       "type": "http",
       "documentation": "Create category",
       "method": "post",
       "endpoint": "category",
       "responses": [
         {
-          "uuid": "cff1c5ad-3cae-49ab-b2fc-02f62e4cd2fa",
+          "uuid": "fd50c4f7-1f70-47f6-a4e5-082565f1c6b5",
           "body": "",
           "latency": 0,
           "statusCode": 201,
@@ -295,7 +288,7 @@
           "default": true
         },
         {
-          "uuid": "e975c4a8-cb81-4b62-aa6f-99eb9740b465",
+          "uuid": "0edfb89a-aafa-4ddb-8413-a55e425884a6",
           "body": "{\n  \"hasError\": true,\n  \"message\": \"Uma categoria com esse nome já existe.\"\n}",
           "latency": 0,
           "statusCode": 400,
@@ -314,13 +307,13 @@
               "operator": "equals"
             }
           ],
-          "rulesOperator": "OR",
+          "rulesOperator": "AND",
           "disableTemplating": false,
           "fallbackTo404": false,
           "default": false
         },
         {
-          "uuid": "2e2efd47-dbc7-40bc-905c-623cb2e86665",
+          "uuid": "66268756-6034-43b1-9c8f-ae83705cdea3",
           "body": "{\n  \"hasError\": true,\n  \"message\": \"Usuário não autenticado.\"\n}",
           "latency": 0,
           "statusCode": 401,
@@ -356,14 +349,14 @@
       "responseMode": null
     },
     {
-      "uuid": "d18e686d-b8ba-45b2-8e97-05073c397fc0",
+      "uuid": "998e16ec-b671-4851-9550-18dc080e903e",
       "type": "http",
       "documentation": "List all categories",
       "method": "get",
       "endpoint": "category",
       "responses": [
         {
-          "uuid": "eb7960c7-4a53-49ef-9d4a-b69b258d2e36",
+          "uuid": "532344d8-9a7d-480d-ab46-a590e1f83d3c",
           "body": "[\n  {{#repeat 5 10}}\n  {\n    \"id\": \"{{guid}}\",\n    \"description\": \"{{faker 'commerce.department'}}\"\n  }\n  {{/repeat}}\n]",
           "latency": 0,
           "statusCode": 200,
@@ -380,7 +373,7 @@
           "default": true
         },
         {
-          "uuid": "dc2e4b1b-10d8-4af5-b1a9-7ac2c0feef34",
+          "uuid": "3d770ae6-ff32-41b6-aaed-80af6794c5d6",
           "body": "{\n  \"hasError\": true,\n  \"message\": \"Usuário não autenticado.\"\n}",
           "latency": 0,
           "statusCode": 401,
@@ -416,14 +409,14 @@
       "responseMode": null
     },
     {
-      "uuid": "543586ac-1b2f-4c2d-a492-b50676a0f1c7",
+      "uuid": "6b83ddd5-750d-429a-b28a-399961a4d110",
       "type": "http",
       "documentation": "Create transaction",
       "method": "post",
       "endpoint": "transaction",
       "responses": [
         {
-          "uuid": "c11c5859-ee25-4ed9-978c-084497d6933b",
+          "uuid": "22e28b98-cad4-4ac0-a40a-610d9d70f01c",
           "body": "",
           "latency": 0,
           "statusCode": 201,
@@ -440,8 +433,8 @@
           "default": true
         },
         {
-          "uuid": "2af04261-5155-48e4-b06c-d4f95fccd06e",
-          "body": "{\n  \"hasError\": true,\n  \"message\": \"Essa transação está com os parâmetros inválidos. São aceitos valores positivos e tipo entrada/saída).\"\n}",
+          "uuid": "36b023f9-3536-4234-a263-e23c9640dcaf",
+          "body": "{\n  \"hasError\": true,\n  \"message\": \"Essa transacão está com os parametros inválidos. São aceitos valores positivos e tipo entrada/saída (0 ou 1).\"\n}",
           "latency": 0,
           "statusCode": 400,
           "label": "Invalid params",
@@ -472,7 +465,7 @@
           "default": false
         },
         {
-          "uuid": "8f036e68-7571-40f6-8336-031468e53b39",
+          "uuid": "b9ee0c04-d8bb-4717-b9e3-cad8333125e2",
           "body": "{\n  \"hasError\": true,\n  \"message\": \"Usuário não autenticado.\"\n}",
           "latency": 0,
           "statusCode": 401,
@@ -508,18 +501,18 @@
       "responseMode": null
     },
     {
-      "uuid": "5b5c5a0f-8da7-40c8-8400-cdec83afe7ad",
+      "uuid": "50440484-3859-4d44-9ae5-d074c5035ff2",
       "type": "http",
-      "documentation": "List all categories",
+      "documentation": "List all transactions",
       "method": "get",
       "endpoint": "transaction",
       "responses": [
         {
-          "uuid": "33d6be77-ab5d-47e6-9753-886e449254ba",
-          "body": "[\n  {{#repeat 5 10}}\n  {\n    \"description\": \"{{faker 'commerce.productName'}}\",\n    \"amount\": {{toFixed (float 10.00 100.00) 2}},\n    \"type\": {{int 0 1}},\n    \"category\": {\n      \"id\": \"{{guid}}\",\n      \"description\": \"{{faker 'commerce.department'}}\"\n    },\n    \"createdAt\": \"{{now 'dd/MM/YYYY'}}\"\n  }\n  {{/repeat}}\n]",
+          "uuid": "8fe632a4-468b-44b7-affb-cae90baee5a5",
+          "body": "[\n  {{#repeat 5 10}}\n  {\n    \"id\": \"{{guid}}\",\n    \"description\": \"{{faker 'commerce.productName'}}\",\n    \"amount\": {{toFixed (float 10.00 100.00) 2}},\n    \"type\": {{int 0 1}},\n    \"category\": {\n      \"id\": \"{{guid}}\",\n      \"description\": \"{{faker 'commerce.department'}}\"\n    },\n    \"createdAt\": \"{{now 'dd/MM/YYYY'}}\"\n  }\n  {{/repeat}}\n]",
           "latency": 0,
           "statusCode": 200,
-          "label": "List all categories",
+          "label": "List all transactions",
           "headers": [],
           "bodyType": "INLINE",
           "filePath": "",
@@ -532,7 +525,7 @@
           "default": true
         },
         {
-          "uuid": "d99693e5-2f3f-4904-8589-3842cff6aae5",
+          "uuid": "d79edbb9-c11a-4c53-b8f9-7b595781eda3",
           "body": "{\n  \"hasError\": true,\n  \"message\": \"Usuário não autenticado.\"\n}",
           "latency": 0,
           "statusCode": 401,
@@ -571,15 +564,15 @@
   "rootChildren": [
     {
       "type": "folder",
-      "uuid": "f845bd12-0058-46b5-acd4-19045c756dd0"
+      "uuid": "ef94097e-7b01-44a6-8514-e601516ed308"
     },
     {
       "type": "folder",
-      "uuid": "3e8adeae-0051-48e1-bd4e-62c501e3086a"
+      "uuid": "623d8c34-36c0-4f39-8e2f-4f765190590d"
     },
     {
       "type": "folder",
-      "uuid": "12a1a0c8-6d29-4c80-98ea-2725d9cd61a2"
+      "uuid": "a6d7a334-b33a-4b86-9b4d-5c0b2942ed9b"
     }
   ],
   "proxyMode": false,

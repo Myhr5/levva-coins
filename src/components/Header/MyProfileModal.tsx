@@ -31,16 +31,6 @@ const formSchema = yup
 const userAvatar: ReactNode = <UserAvatar src={icon} alt="Ícone" />;
 
 export function MyProfileModal() {
-  const [user, setUser] = useState<LoginValues | null>(() => {
-    const storageUser = JSON.parse(window.localStorage.getItem("user") ?? "{}") as LoginValues;
-
-    if (!storageUser) return null;
-
-    setValue("name", storageUser.name);
-
-    return storageUser;
-  });
-
   const closeModalRef = useRef<HTMLButtonElement>(null);
 
   const { isLoading, hasError, errorMessage } = useStore(ProfileStore);
@@ -51,6 +41,16 @@ export function MyProfileModal() {
     setValue,
     formState: { errors },
   } = useForm<FormProps>({ resolver: yupResolver(formSchema) });
+
+  const [user, setUser] = useState<LoginValues | null>(() => {
+    const storageUser = JSON.parse(window.localStorage.getItem("user") ?? "{}") as LoginValues;
+
+    if (!storageUser) return null;
+
+    setValue("name", storageUser.name);
+
+    return storageUser;
+  });
 
   async function handleUpdateProfile({ name }: FormProps) {
     if (user?.id)
