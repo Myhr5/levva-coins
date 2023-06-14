@@ -61,6 +61,10 @@ export function TransactionModal() {
     GetCategoriesUseCase.execute();
   }, []);
 
+  useEffect(() => {
+    console.log(categories);
+  }, [categories]);
+
   async function handleCreateTransaction({ description, amount, type, categoryId }: FormProps) {
     NewTransactionUseCase.execute({
       description,

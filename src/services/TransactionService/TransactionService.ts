@@ -21,7 +21,8 @@ const createTransaction = async ({
     },
   })
     .then(response => {
-      return response.data;
+      console.log(response);
+      return response;
     })
     .catch((err: AxiosError<RequestError>) => {
       throw err.response?.data;
@@ -40,7 +41,20 @@ const getTransactions = async (): Promise<TransactionValues[]> => {
     });
 };
 
+const searchTransactions = async (searchInput: string): Promise<TransactionValues[]> => {
+  return Api.get({
+    url: `/transaction?search=${searchInput}`,
+  })
+    .then(response => {
+      return response.data;
+    })
+    .catch((err: AxiosError<RequestError>) => {
+      throw err.response?.data;
+    });
+};
+
 export const TransactionService = {
   createTransaction,
   getTransactions,
+  searchTransactions,
 };

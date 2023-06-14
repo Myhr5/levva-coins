@@ -55,6 +55,21 @@
           "uuid": "50440484-3859-4d44-9ae5-d074c5035ff2"
         }
       ]
+    },
+    {
+      "uuid": "b99b0661-34aa-43bc-b778-1f440ec8eeba",
+      "name": "Search",
+      "collapsed": false,
+      "children": [
+        {
+          "type": "route",
+          "uuid": "78e800d0-16a4-4bc3-9c6c-37d16b71dad0"
+        },
+        {
+          "type": "route",
+          "uuid": "fd4afd6f-121a-47f3-9795-989972e38dda"
+        }
+      ]
     }
   ],
   "routes": [
@@ -364,7 +379,7 @@
           "headers": [],
           "bodyType": "INLINE",
           "filePath": "",
-          "databucketID": "",
+          "databucketID": "okan",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -505,18 +520,18 @@
       "type": "http",
       "documentation": "List all transactions",
       "method": "get",
-      "endpoint": "transaction",
+      "endpoint": "transaction/",
       "responses": [
         {
           "uuid": "8fe632a4-468b-44b7-affb-cae90baee5a5",
-          "body": "[\n  {{#repeat 5 10}}\n  {\n    \"id\": \"{{guid}}\",\n    \"description\": \"{{faker 'commerce.productName'}}\",\n    \"amount\": {{toFixed (float 10.00 100.00) 2}},\n    \"type\": {{int 0 1}},\n    \"category\": {\n      \"id\": \"{{guid}}\",\n      \"description\": \"{{faker 'commerce.department'}}\"\n    },\n    \"createdAt\": \"{{now 'dd/MM/YYYY'}}\"\n  }\n  {{/repeat}}\n]",
+          "body": "[\n  {{#repeat 5 10}}\n  {\n    \"id\": \"{{guid}}\",\n    \"description\": \"{{faker 'commerce.productName'}}\",\n    \"amount\": {{toFixed (float 10.00 100.00) 2}},\n    \"type\": {{int 0 1}},\n    \"category\": {\n      \"id\": \"{{guid}}\",\n      \"description\": \"{{faker 'commerce.department'}}\"\n    },\n    \"createdAt\": \"{{now 'dd/MM/YYYY'}}\"\n  }\n  {{/repeat}},\n    {\n    \"id\": \"{{guid}}\",\n    \"description\": \"teste\",\n    \"amount\": {{toFixed (float 10.00 100.00) 2}},\n    \"type\": {{int 0 1}},\n    \"category\": {\n      \"id\": \"{{guid}}\",\n      \"description\": \"{{faker 'commerce.department'}}\"\n    },\n    \"createdAt\": \"{{now 'dd/MM/YYYY'}}\"\n  }\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "List all transactions",
           "headers": [],
           "bodyType": "INLINE",
           "filePath": "",
-          "databucketID": "",
+          "databucketID": "w0yy",
           "sendFileAsBody": false,
           "rules": [],
           "rulesOperator": "OR",
@@ -559,6 +574,112 @@
       ],
       "enabled": true,
       "responseMode": null
+    },
+    {
+      "uuid": "fd4afd6f-121a-47f3-9795-989972e38dda",
+      "type": "http",
+      "documentation": "Search transactions",
+      "method": "options",
+      "endpoint": "transaction?/:search",
+      "responses": [
+        {
+          "uuid": "565e768b-0758-438a-ad02-e9add5e99241",
+          "body": "{teste}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Search response",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "w0yy",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": ":search",
+              "value": "teste",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "3f6c6190-8342-4482-a238-989db09ad6b0",
+          "body": "{\n  \"hasError\": true,\n  \"message\": \"Usuário não autenticado.\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "User unauthorized",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "header",
+              "modifier": "authorization",
+              "value": "",
+              "invert": false,
+              "operator": "null"
+            },
+            {
+              "target": "header",
+              "modifier": "authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWQiOiJhMGQxNTA3OC01N2M5LTQ5OGUtODNiNy1kOWIwZjBjYTZhOTIiLCJuYW1lIjoiSm9obiBEb2UiLCJlbWFpbCI6Impob24uZG9lQGxldnZhLmlvIiwiaWF0IjoxNTE2MjM5MDIyfQ.8VQJd-Q6B2eMUCxiVIwLHDeyD_8ymWqIesLje0_e1FM",
+              "invert": true,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "78e800d0-16a4-4bc3-9c6c-37d16b71dad0",
+      "type": "http",
+      "documentation": "Request a search",
+      "method": "post",
+      "endpoint": "transactio?search",
+      "responses": [
+        {
+          "uuid": "faf05dea-fe49-4f2f-9a88-4a474220d47e",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -573,6 +694,10 @@
     {
       "type": "folder",
       "uuid": "a6d7a334-b33a-4b86-9b4d-5c0b2942ed9b"
+    },
+    {
+      "type": "folder",
+      "uuid": "b99b0661-34aa-43bc-b778-1f440ec8eeba"
     }
   ],
   "proxyMode": false,
@@ -618,5 +743,20 @@
       "value": ""
     }
   ],
-  "data": []
+  "data": [
+    {
+      "uuid": "d82a9631-3aba-4688-a333-609eeade9b82",
+      "id": "okan",
+      "name": "category",
+      "documentation": "Create a list of categories",
+      "value": "[\n  {{#repeat 5 10}}\n  {\n    \"id\": \"{{guid}}\",\n    \"description\": \"{{faker 'commerce.department'}}\"\n}\n    {{/repeat}}\n]\n"
+    },
+    {
+      "uuid": "7996cb4c-e99f-412c-a8ec-d8bde78c0052",
+      "id": "w0yy",
+      "name": "transactions",
+      "documentation": "Create a list of transactions",
+      "value": "  [\n  {{#repeat 5 10}}\n  {\n    \"id\": \"{{guid}}\",\n    \"description\": \"{{faker 'commerce.productName'}}\",\n    \"amount\": {{toFixed (float 10.00 100.00) 2}},\n    \"type\": {{int 0 1}},\n    \"category\": {\n      \"id\": \"{{dataRaw 'okan' 'id'}}\",\n      \"description\": \"{{dataRaw 'okan' 'description'}}\"\n    },\n    \"createdAt\": \"{{now 'dd/MM/YYYY'}}\"\n  }\n    {{/repeat}}\n]\n"
+    }
+  ]
 }

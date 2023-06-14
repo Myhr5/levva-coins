@@ -13,7 +13,7 @@ export const SearchFormContainer = styled.form`
     border-radius: 6px;
     border: 0;
     background: ${props => props.theme["gray-700"]};
-    color: ${props => props.theme["gray-500"]};
+    color: ${props => props.theme.white};
     padding: 1rem;
 
     &::placeholder {
@@ -43,6 +43,10 @@ export const SearchFormContainer = styled.form`
       background: ${props => props.theme["yellow-500"]};
       border-color: ${props => props.theme["yellow-500"]};
       color: ${props => props.theme["gray-600"]};
+    }
+
+    &:disabled {
+      background: #ccc;
     }
   }
 `;

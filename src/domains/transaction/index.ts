@@ -15,3 +15,7 @@ export interface TransactionValues {
   category: CategoryValues;
   createdAt: string;
 }
+
+export interface SearchTransactionsParams {
+  searchInput: string;
+}

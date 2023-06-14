@@ -6,7 +6,7 @@ import {
   loadCreateCategoryDone,
 } from "../../stores/CategoryStore/CategoryEvents";
 
-import { NewCategoryParams } from "../../domains/category";
+import { CategoryValues, NewCategoryParams } from "../../domains/category";
 import { RequestError } from "../../domains/request";
 
 const execute = async ({ description }: NewCategoryParams): Promise<void> => {
@@ -16,7 +16,16 @@ const execute = async ({ description }: NewCategoryParams): Promise<void> => {
     description,
   })
     .then(() => {
-      loadCreateCategoryDone();
+      const category = JSON.parse(
+        window.localStorage.getItem("category") ?? "{}",
+      ) as CategoryValues;
+
+      category.description = description;
+
+      // categories.unshift(category);
+      console.log(category);
+
+      loadCreateCategoryDone(category);
     })
     .catch(({ hasError, message }: RequestError) => {
       loadCategoryFail({ hasError, message });
