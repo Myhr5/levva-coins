@@ -6,7 +6,7 @@ import { RequestError } from "../../domains/request";
 import { ProfileParams } from "../../domains/profile";
 
 const updateUser = async ({ id, name }: ProfileParams): Promise<void> => {
-  return Api.post({
+  return Api.put({
     url: `/user/${id}`,
     body: {
       name,

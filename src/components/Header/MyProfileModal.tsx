@@ -70,16 +70,16 @@ export function MyProfileModal() {
     <Modal title="Meu perfil" closeModalRef={closeModalRef} trigger={userAvatar}>
       <Form onSubmit={handleSubmit(handleUpdateProfile)}>
         <UserAvatar src={icon} alt="User Icon" variant="large" />
+
+        <FormInput {...register("name")} type="name" defaultValue={user?.name} />
+        {errors.name && <FormError>{errors.name.message}</FormError>}
+
+        <FormInput type="email" placeholder={user?.email} disabled />
+
+        {hasError && <FormError>{errorMessage}</FormError>}
+
+        <FormButton type="submit">{isLoading ? "Carregando..." : "Atualizar"}</FormButton>
       </Form>
-
-      <FormInput {...register("name")} type="name" defaultValue={user?.name} />
-      {errors.name && <FormError>{errors.name.message}</FormError>}
-
-      <FormInput type="email" placeholder={user?.email} disabled />
-
-      {hasError && <FormError>{errorMessage}</FormError>}
-
-      <FormButton type="submit">{isLoading ? "Carregando..." : "Atualizar"}</FormButton>
       <SignOutButton type="button" onClick={handleSignOut}>
         Sair
       </SignOutButton>

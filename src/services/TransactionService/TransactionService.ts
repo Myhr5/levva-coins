@@ -12,7 +12,7 @@ const createTransaction = async ({
   categoryId,
 }: NewTransactionParams): Promise<void> => {
   return Api.post({
-    url: "/transaction",
+    url: "/transaction/list",
     body: {
       description,
       amount,

@@ -23,8 +23,10 @@ const execute = async ({
     type,
     categoryId,
   })
-    .then(() => {
-      loadCreateTransactionDone();
+    .then(({ id, createdAt }: any) => {
+      loadCreateTransactionDone([
+        { id, description, amount, type, category: { id: categoryId, description }, createdAt },
+      ]);
     })
     .catch(({ hasError, message }: RequestError) => {
       loadTransactionFail({ hasError, message });

@@ -9,7 +9,7 @@ import { defaultTheme } from "../../styles/defaultTheme";
 export function Summary() {
   const { transactions } = useStore(TransactionStore);
 
-  const summary = transactions.reduce(
+  const summary = Array.from(transactions).reduce(
     (acc, transaction) => {
       if (transaction.type === 0) {
         acc.deposits += transaction.amount;

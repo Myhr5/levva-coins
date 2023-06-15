@@ -44,9 +44,5 @@ export const SearchFormContainer = styled.form`
       border-color: ${props => props.theme["yellow-500"]};
       color: ${props => props.theme["gray-600"]};
     }
-
-    &:disabled {
-      background: #ccc;
-    }
   }
 `;
