@@ -43,7 +43,7 @@ const getTransactions = async (): Promise<TransactionValues[]> => {
 
 const searchTransactions = async (searchInput: string): Promise<TransactionValues[]> => {
   return Api.get({
-    url: `/transaction?search=${searchInput}`,
+    url: `/transaction/${searchInput}`,
   })
     .then(response => {
       return response.data;

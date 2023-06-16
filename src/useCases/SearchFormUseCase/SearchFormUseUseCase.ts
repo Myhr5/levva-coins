@@ -1,5 +1,5 @@
 import { TransactionValues } from "../../domains/transaction";
-import { TransactionService } from "../../services/TransactionService/TransactionService";
+import { SearchFormService } from "../../services/SearchFormService/SearchFormService";
 
 import {
   loadTransaction,
@@ -13,17 +13,18 @@ import { RequestError } from "../../domains/request";
 const execute = async ({ searchInput }: SearchTransactionsParams): Promise<void> => {
   loadTransaction();
 
-  return TransactionService.searchTransactions(searchInput)
-    .then((transactions: TransactionValues[]) => {
-      loadTransactionDone(transactions);
+  return SearchFormService.searchFormService({ searchInput })
+    .then((response: TransactionValues[]) => {
+      loadTransactionDone(response);
     })
     .catch(({ hasError, message }: RequestError) => {
       loadTransactionFail({ hasError, message });
+      throw new Error();
     });
 };
 
-const GetTransactiosnUseCase = {
+const SearchFormUseCase = {
   execute,
 };
 
-export default GetTransactiosnUseCase;
+export default SearchFormUseCase;

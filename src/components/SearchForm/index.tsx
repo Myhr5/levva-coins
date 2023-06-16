@@ -1,34 +1,42 @@
-import { useEffect, useState } from "react";
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
+
+import { useEffect } from "react";
 
 import { MagnifyingGlass } from "phosphor-react";
 import { SearchFormContainer } from "./styles";
 import GetTransactiosnUseCase from "../../useCases/GetTransactionsUseCase/GetTransactionsUseCase";
-import SearchTransactionsUseCase from "../../useCases/SearchTransactionsUseCase/SearchTransactionsUseCase";
+import SearchFormUseCase from "../../useCases/SearchFormUseCase/SearchFormUseUseCase";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+interface FormProps {
+  searchInput: string;
+}
 
 export function SearchForm() {
-  const [searchInput, setSearchInput] = useState("");
+  const formSchema = yup.object({
+    searchInput: yup.string(),
+  });
+
+  const { register, handleSubmit, reset } = useForm<FormProps>({
+    resolver: yupResolver(formSchema),
+  });
+
+  // const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     GetTransactiosnUseCase.execute();
   }, []);
 
-  async function handleSearchTransactions() {
-    SearchTransactionsUseCase.execute({ searchInput }).then(data => {
-      console.log(data);
-    });
-    console.log("teste");
-  }
+  const handleSearchTransactions = async ({ searchInput }: FormProps) => {
+    SearchFormUseCase.execute({ searchInput }).finally(() => reset());
+  };
 
   return (
-    <SearchFormContainer>
-      <input
-        onChange={({ target }) => setSearchInput(target.value)}
-        value={searchInput}
-        type="text"
-        placeholder="Busque por transações"
-      />
+    <SearchFormContainer onSubmit={handleSubmit(handleSearchTransactions)}>
+      <input type="text" placeholder="Busque por transações" {...register("searchInput")} />
 
-      <button onClick={handleSearchTransactions} disabled={searchInput ? false : true}>
+      <button type="submit">
         <MagnifyingGlass size={20} />
         Buscar
       </button>
