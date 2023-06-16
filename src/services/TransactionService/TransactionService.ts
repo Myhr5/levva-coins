@@ -10,9 +10,9 @@ const createTransaction = async ({
   amount,
   type,
   categoryId,
-}: NewTransactionParams): Promise<void> => {
+}: NewTransactionParams): Promise<TransactionValues[]> => {
   return Api.post({
-    url: "/transaction/list",
+    url: "/transaction",
     body: {
       description,
       amount,
@@ -22,7 +22,7 @@ const createTransaction = async ({
   })
     .then(response => {
       console.log(response);
-      return response;
+      return response.data;
     })
     .catch((err: AxiosError<RequestError>) => {
       throw err.response?.data;
@@ -31,7 +31,7 @@ const createTransaction = async ({
 
 const getTransactions = async (): Promise<TransactionValues[]> => {
   return Api.get({
-    url: "/transaction",
+    url: "/transaction/list",
   })
     .then(response => {
       return response.data;

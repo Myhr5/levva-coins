@@ -5,19 +5,13 @@ import Api from "../../clients/api/Api";
 import { NewAccountParams } from "../../domains/newAccount";
 import { RequestError } from "../../domains/request";
 
-const createUser = async ({
-  name,
-  email,
-  password,
-  confirmPassword,
-}: NewAccountParams): Promise<void> => {
+const createUser = async ({ name, email, password }: NewAccountParams): Promise<void> => {
   return Api.post({
     url: "/user",
     body: {
       name,
       email,
       password,
-      confirmPassword,
     },
   })
     .then(response => {

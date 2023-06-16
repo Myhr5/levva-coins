@@ -3,6 +3,6 @@ export interface NewCategoryParams {
 }
 
 export interface CategoryValues {
-  id: string;
+  id: number;
   description: string;
 }

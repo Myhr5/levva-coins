@@ -4,7 +4,7 @@ export interface NewTransactionParams {
   description: string;
   amount: number;
   type: number;
-  categoryId: string;
+  categoryId: number;
 }
 
 export interface TransactionValues {
@@ -13,7 +13,7 @@ export interface TransactionValues {
   amount: number;
   type: number;
   category: CategoryValues;
-  createdAt: string;
+  createdAt: Date;
 }
 
 export interface SearchTransactionsParams {

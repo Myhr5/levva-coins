@@ -31,7 +31,7 @@ interface FormProps {
   description: string;
   amount: number;
   type: string;
-  categoryId: string;
+  categoryId: number;
 }
 
 const formSchema = yup
@@ -39,7 +39,7 @@ const formSchema = yup
     description: yup.string().required("O nome da transação é obrigatório."),
     amount: yup.number().required("O valor da transação é obrigatório."),
     type: yup.string().oneOf(["income", "outcome"]).required("O valor da transação é obrigatório."),
-    categoryId: yup.string().required("O nome da categoria é obrigatório."),
+    categoryId: yup.number().required("O nome da categoria é obrigatório."),
   })
   .required();
 

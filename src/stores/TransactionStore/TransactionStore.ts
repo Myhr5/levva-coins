@@ -31,7 +31,7 @@ const TransactionStore = createStore<TransactionState>(initialState)
   }))
   .on(loadTransactionDone, (_, data) => ({
     isLoading: false,
-    transactions: data,
+    transactions: data.reverse(),
     hasError: false,
     errorMessage: "",
   }))
