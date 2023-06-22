@@ -16,7 +16,7 @@ const execute = async ({ description }: NewCategoryParams): Promise<void> => {
     description,
   })
     .then(({ id }: any) => {
-      loadCreateCategoryDone([{ id, description }]);
+      loadCreateCategoryDone({ id, description });
     })
     .catch(({ hasError, message }: RequestError) => {
       loadCategoryFail({ hasError, message });
